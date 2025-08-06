@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travels-Web</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+#Nav{
+   background-color:#000000 !important;
+}
+
+#header h2{
+  color:#FF7500;
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  position:relative;
+  bottom:100px;
+  left:20px;
+}
+
+#service h1{
+  font-family: "Quicksand", sans-serif; font-optical-sizing: auto; font-weight: <weight>; font-style: normal;
+}
+#service img{
+  width:100%;
+}
+
+#travels h1{
+  font-family: "Quicksand", sans-serif; font-optical-sizing: auto; font-weight: <weight>; font-style: normal;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Card Styles */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Popup Content */
+.popup-content {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    position: relative;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit Button */
+.submit-btn {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+#step h1 {
+   font-family: "Quicksand", sans-serif;
+   font-weight: 600;
+   text-align: center;
+   padding: 50px;
+}
+
+#step ul.timeline {
+   position: relative;
+   list-style-type: none;
+   padding-left: 180px;
+}
+
+#step ul.timeline:before {
+   position: absolute;
+   display: block;
+   left: 136px;
+   width: 8px;
+   height: 100%;
+   border-radius: 4px;
+   background-color: #07b;
+   content: ' ';
+}
+
+#step ul.timeline .event {
+   position: relative;
+   padding: 16px;
+   background: white;
+   border-radius: 4px;
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 
+               0 1px 1px rgba(0, 0, 0, 0.14), 
+               0 2px 1px -1px rgba(0, 0, 0, 0.12);
+   margin-bottom: 30px;
+   background:#C1C6FF;
+}
+
+#step ul.timeline .event:before {
+   content: "";
+   position: absolute;
+   left: -20px;
+   top: 50%;
+   width: 12px;
+   height: 12px;
+   background: #07b;
+   border-radius: 50%;
+   transform: translateY(-50%);
+   background:red;
+}
+
+#step .time {
+   font-size: 14px;
+   color: #555;
+   margin-bottom: 5px;
+}
+
+</style>
+  <!-- Navigation Bar -->
+  <div id="Nav">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <h1>MONSTER-HOLIDAYS</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="#header">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#service">Service</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#travels">Travels</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link active" href="founder.html">Founder</a></li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Header Section -->
+  <div id="header">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="photo1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="photo2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="photo3.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div id="service">
+    <h1 class="text-center">We Offer Best Services</h1>
+    <img src="service.jpg">
+  </div>
+
+  <!-- Travels Section -->
+  <div id="travels">
+    <h1 class="text-center">Our Vehicles</h1>
+    <div class="container mt-5">
+      <div class="row">
+        <!-- Travel Card 1 -->
+        <div class="col-md-3">
+          <div class="card shadow">
+            <img src="1.jpg" class="card-img-top" alt="Bus">
+            <div class="card-body">
+              <h5 class="card-title">Bus</h5>
+              <p class="card-text">49-seat bus</p>
+              <button onclick="openPopup('Bus')">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel Card 2 -->
+        <div class="col-md-3">
+          <div class="card shadow">
+            <img src="2.jpg" class="card-img-top" alt="Car">
+            <div class="card-body">
+              <h5 class="card-title">Car</h5>
+              <p class="card-text">6-seat car</p>
+              <button onclick="openPopup('Car')">Book Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel Card 3 -->
+        <div class="col-md-3">
+          <div class="card shadow">
+            <img src="3.jpg" class="card-img-top" alt="Van">
+            <div class="card-body">
+              <h5 class="card-title">Van</h5>
+              <p class="card-text">18-seat van</p>
+              <button onclick="openPopup('Van')">Book Now</button>
+            </div>
+          </div>
+        </div>
+        
+        
+      <div class="col-md-3">
+          <div class="card shadow">
+            <img src="5.jpg" class="card-img-top" alt="Car">
+            <div class="card-body">
+              <h5 class="card-title">Bus</h5>
+              <p class="card-text">40-seat car</p>
+              <button onclick="openPopup('Car')">Book Now</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Travel Card 3 -->
+
+        <!-- Travel Card 4 -->
+        <div class="col-md-3">
+          <div class="card shadow">
+            <img src="4.jpg" class="card-img-top" alt="van">
+            <div class="card-body">
+              <h5 class="card-title">van</h5>
+              <p class="card-text">5-seat van</p>
+              <button onclick="openPopup('van')">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Booking Form -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Book Your Vehicle</h2>
+
+        <!-- Web3Forms Booking Form -->
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="6038a88f-dbb8-432a-8389-2a1db22ae3cd">
+            
+            <!-- Vehicle Name (Read-Only) -->
+            <label for="vehicle">Vehicle:</label>
+            <input type="text" id="vehicle" name="vehicle" readonly>
+            
+            <!-- Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <!-- Phone Number -->
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            
+            <!-- Address -->
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+            
+            <!-- Start Place -->
+            <label for="start">Start Place:</label>
+            <input type="text" id="start" name="start" required>
+            
+            <!-- End Place -->
+            <label for="end">End Place:</label>
+            <input type="text" id="end" name="end" required>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</div>
+<div id="step">
+   <h1 class="text-center">Steps to Book</h1>
+   <div class="container">
+      <ul class="timeline">
+         <li class="event">
+            <div class="left-arrow"></div>
+            <h1>Login Monster Holidays</h1>
+         </li>
+         <li class="event">
+            <div class="left-arrow"></div>
+            <h1>Select your package</h1>
+         </li>
+         <li class="event">
+            <div class="left-arrow"></div>
+            <h1>Online payment</h1>
+         </li>
+         <li class="event">
+            <div class="left-arrow"></div>
+            <h1>Enjoy your journey</h1>
+         </li>
+      </ul>
+   </div>
+</div>  
+
+
+
+<div id="contact">
+<div id="contact">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="contact-form">
+          <h4 class="text-center text-primary mb-4">Contact Us</h4>
+          <form action="https://api.web3forms.com/submit" method="POST" class="needs-validation" novalidate>
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="6038a88f-dbb8-432a-8389-2a1db22ae3cd">
+
+            <!-- Full Name -->
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <!-- Message -->
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Type your message" required></textarea>
+              <div class="invalid-feedback">Please enter your message.</div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+      <div class="footer">
+        <hr/>
+        <h6 class="text-center"> ©️All copyright in this website</h6>
+        
+    </div>
+
+  
+  
+  
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript for Popup -->
+  <script>
+  // Open Popup
+function openPopup(vehicleName) {
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("vehicle").value = vehicleName;
+}
+
+// Close Popup
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        if (!this.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.classList.add('was-validated');
+    });
+  </script>
+
+</body>
+</html>
